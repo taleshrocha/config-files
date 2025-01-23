@@ -20,6 +20,8 @@ spring:
       routes:
         - id: retry_route
           uri: http://localhost:8082/service-alpha/alpha
+          predicates:
+            - Host=*
           filters:
             - name: Retry
               args:
