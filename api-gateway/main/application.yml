@@ -18,15 +18,15 @@ spring:
 cloud:
   loadbalancer:
     enabled: true
-    gateway:
-      filters:
-        - name: Retry
-          args:
-            retries: 3
-            statuses: BAD_GATEWAY
-            methods: GET,POST
-            backoff:
-              firstBackoff: 10ms
-              maxBackoff: 50ms
-              factor: 2
-              basedOnPreviousValue: false
+#    gateway:
+#      filters:
+#        - name: Retry
+#          args:
+#            retries: 3
+#            statuses: BAD_GATEWAY
+#            methods: GET,POST
+#            backoff:
+#              firstBackoff: 10ms
+#              maxBackoff: 50ms
+#              factor: 2
+#              basedOnPreviousValue: false
