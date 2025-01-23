@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
   eureka:
     instance:
       prefer-ip-address: true
@@ -15,9 +15,12 @@ server:
         enabled: true
 
 spring:
-cloud:
-  loadbalancer:
-    enabled: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
 #    gateway:
 #      filters:
 #        - name: Retry
