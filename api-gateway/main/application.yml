@@ -18,17 +18,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: retry_test
+        - id: retry_route
           uri: http://localhost:8082/service-alpha/alpha
-          predicates:
-            - Host=localhost
           filters:
             - name: Retry
               args:
                 retries: 3
-                series: SERVER_ERROR
-                statuses: BAD_GATEWAY
-                methods: GET,POST
+                statuses: INTERNAL_SERVER_ERROR
+                methods: GET
                 backoff:
                   firstBackoff: 5000ms
                   maxBackoff: 5000ms
