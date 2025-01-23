@@ -30,9 +30,9 @@ spring:
                 statuses: BAD_GATEWAY
                 methods: GET,POST
                 backoff:
-                  firstBackoff: 10ms
-                  maxBackoff: 50ms
-                  factor: 2
+                  firstBackoff: 5000ms
+                  maxBackoff: 5000ms
+                  factor: 1
                   basedOnPreviousValue: false
       discovery:
         locator:
