@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    loadbalancer:
+      enabled: true
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+      access: unrestricted
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      service-beta:
+        sliding-window-type: count_based
+        sliding-window-size: 2
+        wait-duration-in-open-state: 10s
+        failure-rate-threshold: 50
+        event-consumer-buffer-size: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        register-health-indicator: true
